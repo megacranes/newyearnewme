@@ -1,9 +1,15 @@
 <template lang="pug">
 .crane-animation
-  canvas(ref="craneAnimationCanvas")
+  canvas(ref="craneAnimationCanvas", width="600px", height="300px")
 </template>
 
 <script>
+const LINE_COLOR = '#000000'
+const BALL_COLOR = '#F4B042'
+// const HOOK_COLOR = '#000000'
+
+const RADIUS = 20
+
 export default {
   name: 'CraneAnimation',
   props: {
@@ -13,10 +19,9 @@ export default {
     return {
       craneLineLength: 0,
       currentBallPercentage: 0,
-      x: 0,
-      y: 0,
-      dx: 0,
-      dy: 2
+      x: 0.5,
+      y: 0.5,
+      dy: 5
     }
   },
   watch: {
@@ -28,14 +33,15 @@ export default {
   },
   methods: {
     drawCrane () {
-      // Colors
-      // const LINE_COLOR = ''
-      // const BALL_COLOR = ''
-      // const HOOK_COLOR = ''
-
       this.drawLine()
         .then(() => {
           this.drawBall(this.currentBallPercentage)
+          .then(() => {
+            this.drawHook()
+            .then(() => {
+              this.handleAnimationComplete()
+            })
+          })
         })
     },
     drawLine () {
@@ -47,13 +53,14 @@ export default {
         if (this.craneLineLength < LINE_MAX_LENGTH) {
           if (canvas) {
             let ctx = canvas.getContext('2d')
-            this.x = canvas.width / 2
+            this.x = canvas.width / 2 + 0.5
 
             ctx.lineWidth = 1
 
             window.requestAnimationFrame(this.drawCrane)
 
             ctx.beginPath()
+            ctx.strokeStyle = LINE_COLOR
             ctx.moveTo(this.x, this.craneLineLength)
             ctx.lineTo(this.x, this.craneLineLength + this.dy)
             ctx.closePath()
@@ -69,30 +76,42 @@ export default {
     drawBall (currentBallPercentage) {
       let canvas = this.$refs.craneAnimationCanvas
 
-      const RADIUS = 20
       const START_ANGLE = Math.PI / 2
       const END_ANGLE = Math.PI * 2
-      const ANTI_CLOCKWISE = false
+      const MAX_PERCENTAGE = 104
 
-      this.y = this.craneLineLength + RADIUS
+      this.y = this.craneLineLength + RADIUS + 2 + 0.5 // offset linewidth
 
       return new Promise((resolve) => {
-        if (canvas) {
-          let ctx = canvas.getContext('2d')
+        if (currentBallPercentage <= MAX_PERCENTAGE) {
+          if (canvas) {
+            let ctx = canvas.getContext('2d')
 
-          ctx.lineWidth = 1
+            ctx.lineWidth = 0.5
 
-          window.requestAnimationFrame(() => { this.drawBall(this.currentBallPercentage / 100) })
+            window.requestAnimationFrame(() => { this.drawBall(this.currentBallPercentage / 100) })
 
-          ctx.beginPath()
-          ctx.arc(this.x, this.y, RADIUS, -(START_ANGLE), (END_ANGLE * currentBallPercentage - START_ANGLE), ANTI_CLOCKWISE)
-          ctx.stroke()
-          this.currentBallPercentage++
+            ctx.beginPath()
+            ctx.strokeStyle = BALL_COLOR
+            ctx.arc(this.x, this.y, RADIUS, -(START_ANGLE), (END_ANGLE * currentBallPercentage - START_ANGLE))
+            ctx.stroke()
+
+            this.currentBallPercentage++
+          }
+        } else {
+          resolve()
         }
       })
     },
     drawHook () {
+      this.y += RADIUS
 
+      return new Promise((resolve) => {
+        resolve()
+      })
+    },
+    handleAnimationComplete () {
+      this.$emit('crane-animation-complete')
     }
   }
 }
@@ -105,9 +124,6 @@ export default {
 
    canvas {
       display: inline;
-      height: 40vh;
-      width: 40vw;
    }
 }
-
 </style>

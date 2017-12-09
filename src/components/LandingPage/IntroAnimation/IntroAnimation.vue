@@ -1,6 +1,7 @@
 <template lang="pug">
 .intro-animation
-  crane-animation(:start-drawing="showCraneAnimation")
+  crane-animation(:start-drawing="showCraneAnimation",
+                  v-on:crane-animation-complete=handleAnimationComplete)
   .intro-msg
     span {{ introMsgVisible }}
 </template>
@@ -23,7 +24,7 @@ export default {
     CraneAnimation
   },
   mounted () {
-    const TYPERWRITER_INTERVAL = 70
+    const TYPERWRITER_INTERVAL = 40
 
     this.typeWriterInterval = setInterval(this.typeIntroMessage, TYPERWRITER_INTERVAL)
   },
@@ -35,6 +36,9 @@ export default {
         clearInterval(this.typeWriterInterval)
         this.showCraneAnimation = true
       }
+    },
+    handleAnimationComplete () {
+      this.$emit('animation-complete')
     }
   }
 }
@@ -45,6 +49,9 @@ export default {
 .intro-animation {
   .intro-msg {
     text-align: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
 
     span {
 	    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
