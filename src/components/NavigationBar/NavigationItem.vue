@@ -7,7 +7,7 @@
 
 export default {
   name: 'NavigationItem',
-  props: ['name'],
+  props: ['name', 'hasSubMenu'],
   data () {
     return {
       itemName: this.name

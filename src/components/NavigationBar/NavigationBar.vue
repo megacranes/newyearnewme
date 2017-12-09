@@ -1,6 +1,8 @@
 <template lang="pug">
 .navigation-bar
-  navigation-item(v-for="item in navItems" :name="item")
+  .logo
+  .navigation-items-container
+    navigation-item(v-for="item in navItems" :name="item")
 </template>
 
 <script>
@@ -8,6 +10,7 @@ import NavigationItem from './NavigationItem'
 
 export default {
   name: 'NavigationBar',
+  props: ['isMobile'],
   data () {
     return {
       navItems: [
@@ -33,5 +36,13 @@ export default {
 .navigation-bar {
   overflow: hidden;
   width: 100%;
+
+  .logo {
+    float: left;
+  }
+
+  .navigation-items-container {
+    float: right;
+  }
 }
 </style>
