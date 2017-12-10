@@ -1,24 +1,19 @@
 <template lang="pug">
 .navigation-item(@click="emitItemClickedEvent")
-  span {{ itemName }}
+  span {{ item.navigationName }}
 </template>
 
 <script>
 
 export default {
   name: 'NavigationItem',
-  props: ['name', 'hasSubMenu'],
-  data () {
-    return {
-      itemName: this.name
-    }
-  },
+  props: ['item', 'hasSubMenu'],
   components: {
 
   },
   methods: {
     emitItemClickedEvent () {
-      this.$emit('item-clicked', this.itemName)
+      this.$emit('nav-item-clicked', this.item)
     }
   }
 }
@@ -30,6 +25,7 @@ export default {
   overflow: hidden;
   display: inline-block;
   position: relative;
+  cursor: pointer;
 
   span {
     padding: 10px;

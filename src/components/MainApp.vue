@@ -1,33 +1,44 @@
 <template lang="pug">
 .main-app
-  navigation-bar
+  navigation-bar(:navigation-items="navigationItems" @nav-item-clicked="changeCurrentComponent")
   component(v-bind:is="currentComponent")
 </template>
 
 <script>
 import NavigationBar from './NavigationBar/NavigationBar'
-import IntroAnimation from './LandingPage/IntroAnimation/IntroAnimation'
-
-const COMPONENTS = {
-  ANIMATION: 'intro-animation',
-  LANDING_PAGE: 'landing-page'
-}
+import {
+  LANDING_PAGE,
+  CONTACT,
+  TEAM,
+  FLEET,
+  SERVICES } from '../constants/pages'
+import LandingPage from './LandingPage/LandingPage'
 
 export default {
   name: 'MainApp',
   data () {
     return {
-      currentComponent: COMPONENTS.LANDING_PAGE
+      currentComponent: LANDING_PAGE.component,
+      navigationItems: [LANDING_PAGE, SERVICES, FLEET, TEAM, CONTACT]
     }
   },
   components: {
     NavigationBar,
-    IntroAnimation
+    LandingPage
   },
   methods: {
     transitionToLandingPage () {
-      this.currentComponent = COMPONENTS.LANDING_PAGE
-      alert('hi')
+      this.currentComponent = LANDING_PAGE.component
+    },
+    changeCurrentComponent (newComponent) {
+      // TODO: switch newComponent to determine which component to swtich to
+
+      // Home = LandingPage
+      // Contact = LandingPage#Contact
+      // About = About
+      // Meet the Fleet
+      // Request a Quote
+      // The Team
     }
   }
 }
