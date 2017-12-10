@@ -13,6 +13,10 @@ import {
   FLEET,
   SERVICES } from '../constants/pages'
 import LandingPage from './LandingPage/LandingPage'
+import Contact from './Contact/Contact'
+import Fleet from './Fleet/Fleet'
+import Services from './Services/Services'
+import Team from './Team/Team'
 
 export default {
   name: 'MainApp',
@@ -24,21 +28,18 @@ export default {
   },
   components: {
     NavigationBar,
-    LandingPage
+    LandingPage,
+    Contact,
+    Fleet,
+    Services,
+    Team
   },
   methods: {
     transitionToLandingPage () {
       this.currentComponent = LANDING_PAGE.component
     },
     changeCurrentComponent (newComponent) {
-      // TODO: switch newComponent to determine which component to swtich to
-
-      // Home = LandingPage
-      // Contact = LandingPage#Contact
-      // About = About
-      // Meet the Fleet
-      // Request a Quote
-      // The Team
+      this.currentComponent = newComponent.component
     }
   }
 }
