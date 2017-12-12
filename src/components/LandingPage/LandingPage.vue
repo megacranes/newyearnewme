@@ -5,6 +5,7 @@
     button.action-item-btn
       span Get a Crane
   .word-cloud-container
+    business-word-cloud
   .about-the-company-container
   .img-container
   .what-we-do-container
@@ -13,6 +14,7 @@
 
 <script>
 import LandingPageSlider from './LandingPageSlider/LandingPageSlider'
+import BusinessWordCloud from './BusinessWordCloud/BusinessWordCloud'
 import { SLIDE_1, SLIDE_2, SLIDE_3, SLIDE_4 } from '../../constants/landing-page/landing-page'
 
 export default {
@@ -24,7 +26,8 @@ export default {
     }
   },
   components: {
-    LandingPageSlider
+    LandingPageSlider,
+    BusinessWordCloud
   },
   methods: {
 
@@ -41,9 +44,8 @@ export default {
     .action-item-btn {
       margin: auto;
       position: absolute;
-      top: 0;
+      top: 50vh;
       left: 0;
-      bottom: 0;
       right: 0;
       height: 50px;
       width: 200px;
@@ -53,6 +55,10 @@ export default {
         margin: 15px;
       }
     }
+  }
+
+  .word-cloud-container {
+    padding: 50px;
   }
 }
 </style>

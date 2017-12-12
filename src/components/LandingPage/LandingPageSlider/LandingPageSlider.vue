@@ -23,7 +23,7 @@ import { Carousel, Slide } from 'vue-carousel'
  */
 
 export default {
-  name: 'Team',
+  name: 'LandingPageSlider',
   props: ['slides'],
   data () {
     return {
