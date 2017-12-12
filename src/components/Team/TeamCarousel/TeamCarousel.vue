@@ -1,12 +1,12 @@
 <template lang="pug">
 .team-carousel
   slick(ref="slick" :options="slickOptions")
-    a(v-for="member in teamMembers" href="https://i.pinimg.com/564x/6c/78/05/6c7805c892e74c3ff5c9596f22fdb1b6.jpg")
-      img(src="https://i.pinimg.com/564x/6c/78/05/6c7805c892e74c3ff5c9596f22fdb1b6.jpg")
+    a(v-for="member in teamMembers" @click="showTeamMemberInfo(member)")
+      img(class="slick-img" :src="member.pic")
 </template>
 
 <script>
-import Slick from 'vue-slick'
+import Slick from '../../../vendor/vue-slick/slickCarousel'
 
 export default {
   name: 'TeamCarousel',
@@ -17,7 +17,8 @@ export default {
         centerMode: true,
         centerPadding: '40px',
         slidesToShow: 3,
-        slidesToScroll: 2,
+        swipeToSlide: true,
+        slidesToScroll: 3,
         infinite: true,
         accessibility: true,
         adaptiveHeight: false,
@@ -33,6 +34,9 @@ export default {
     Slick
   },
   methods: {
+    showTeamMemberInfo (teamMember) {
+      this.$emit('show-team-member-info', teamMember)
+    },
     next () {
       this.$refs.slick.next()
     },

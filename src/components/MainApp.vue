@@ -1,7 +1,7 @@
 <template lang="pug">
 .main-app
   navigation-bar(:navigation-items="navigationItems" @nav-item-clicked="changeCurrentComponent")
-  component(v-bind:is="currentComponent")
+  component.current-component(v-bind:is="currentComponent")
 </template>
 
 <script>
@@ -51,5 +51,9 @@ export default {
   overflow: hidden;
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
   font-size: 32px;
+
+  .current-component {
+    padding: 25px;
+  }
 }
 </style>

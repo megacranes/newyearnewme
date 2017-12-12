@@ -1,18 +1,25 @@
 <template lang="pug">
 .team
+  .team-member-info
+    .team-member-picture
+      img(:src="currentMember.pic")
+    .team-member-name
+      span {{ currentMember.name }}
+    .team-member-job-title
+      span {{ currentMember.jobTitle }}
+    .team-member-cel-num
+      span {{ currentMember.celPhone }}
+    .team-member-email
+      span {{ currentMember.email }}
+    .team-member-description
+      span {{ currentMember.detailedDescription }}
   .vip.team-members-container
     h2 Department Heads
-    team-carousel(:team-members="salesTeam")
-  .sales.team-members-container
-    h2 Sales
-  .operators.team-members-container
-    h2 Operators
-  .mechanics.team-members-container
-    h2 Shop Team
+    team-carousel(:team-members="salesTeam" @show-team-member-info="showTeamMemberInfo")
 </template>
 
 <script>
-import { KERRY_HAWLEY, BARB, MIKE_PROPERZI, VLAD } from '../../constants/sales-team'
+import { KERRY_HAWLEY, BARB, MIKE_PROPERZI, VLAD } from '../../constants/team-members'
 import TeamCarousel from './TeamCarousel/TeamCarousel'
 
 export default {
@@ -20,14 +27,17 @@ export default {
   props: [],
   data () {
     return {
-      salesTeam: [KERRY_HAWLEY, BARB, MIKE_PROPERZI, VLAD]
+      salesTeam: [KERRY_HAWLEY, BARB, MIKE_PROPERZI, VLAD],
+      currentMember: KERRY_HAWLEY
     }
   },
   components: {
     TeamCarousel
   },
   methods: {
-
+    showTeamMemberInfo (member) {
+      this.currentMember = member
+    }
   }
 }
 </script>
@@ -36,6 +46,18 @@ export default {
 <style lang="scss" scoped>
 .team {
   overflow: hidden;
+
+  .team-member-info {
+    text-align: center;
+
+    img {
+      height: 240px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
 
   .team-members-container {
     width: 100%;
