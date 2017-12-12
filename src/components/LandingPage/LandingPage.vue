@@ -1,6 +1,14 @@
 <template lang="pug">
 .landing-page
-  landing-page-slider(:slides="slides")
+  .slider-1-container
+    landing-page-slider(:slides="slides")
+    button.action-item-btn
+      span Get a Crane
+  .word-cloud-container
+  .about-the-company-container
+  .img-container
+  .what-we-do-container
+  .contact-container
 </template>
 
 <script>
@@ -28,5 +36,23 @@ export default {
 <style lang="scss" scoped>
 .landing-page {
   overflow: hidden;
+
+  .slider-1-container {
+    .action-item-btn {
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 50px;
+      width: 200px;
+      font-size: 22px;
+
+      span {
+        margin: 15px;
+      }
+    }
+  }
 }
 </style>

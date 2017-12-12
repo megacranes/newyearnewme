@@ -46,7 +46,7 @@ export default {
 <style lang="scss">
 .landing-page-slider {
   height: 100vh;
-  width: 100vw;
+  width: calc(100vw - 10px);
 
   .VueCarousel {
     .VueCarousel-wrapper {
@@ -75,6 +75,7 @@ export default {
 
     .VueCarousel-pagination {
       .VueCarousel-dot-container {
+        margin: auto;
         position: absolute;
         bottom: 20px;
         .VueCarousel-dot {
