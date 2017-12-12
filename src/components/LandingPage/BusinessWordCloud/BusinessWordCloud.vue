@@ -39,7 +39,7 @@ export default {
     return {
       words: WORDS,
       fontFamily: '"Trebuchet MS"',
-      fontSizeRatio: 10,
+      fontSizeRatio: 20,
       rotation: '0',
       color: "([, weight]) => weight > 10 ? 'DeepPink' : weight > 5 ? 'RoyalBlue' : 'Indigo'"
     }
@@ -56,7 +56,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .business-word-cloud {
-  height: calc(100vh - 100px);
-  width: calc(100vw - 100px);
+  height: calc(100vh - 200px);
+  width: calc(100vw - 200px);
 }
 </style>
