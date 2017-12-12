@@ -22,6 +22,13 @@
 import { KERRY_HAWLEY, BARB, MIKE_PROPERZI, VLAD } from '../../constants/team-members'
 import TeamCarousel from './TeamCarousel/TeamCarousel'
 
+/**
+ TODO:
+ - Use recaptcha to get email
+ - mailto
+ - click to call
+ */
+
 export default {
   name: 'Team',
   props: [],

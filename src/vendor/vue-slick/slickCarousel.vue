@@ -199,11 +199,14 @@ export default {
 .slick-slider {
   overflow: hidden;
 
-  img {
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+  a {
+    width: auto;
+    img {
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
   }
 }
 </style>

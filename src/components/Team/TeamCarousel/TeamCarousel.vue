@@ -1,7 +1,7 @@
 <template lang="pug">
 .team-carousel
   slick(ref="slick" :options="slickOptions")
-    a(v-for="member in teamMembers" @click="showTeamMemberInfo(member)")
+    a(v-for="member in teamMembers" :key="member.key" @click="showTeamMemberInfo(member)")
       img(class="slick-img" :src="member.pic")
 </template>
 
@@ -14,14 +14,14 @@ export default {
   data () {
     return {
       slickOptions: {
-        centerMode: true,
-        centerPadding: '40px',
+        centerMode: false,
+        centerPadding: '20px',
         slidesToShow: 3,
         swipeToSlide: true,
         slidesToScroll: 3,
         infinite: true,
         accessibility: true,
-        adaptiveHeight: false,
+        adaptiveHeight: true,
         arrows: true,
         dots: true,
         draggable: true,
@@ -58,13 +58,5 @@ export default {
 
 .team-carousel {
   overflow: hidden;
-
-  .slick {
-    a {
-      img {
-        height: 170px;
-      }
-    }
-  }
 }
 </style>

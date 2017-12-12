@@ -2,7 +2,7 @@
 .navigation-bar
   .logo
   .navigation-items-container
-    navigation-item(v-for="item in navigationItems" :item="item" @nav-item-clicked="emitNavItemClicked")
+    navigation-item(v-for="item in navigationItems" :key="item.navigationName" :item="item" @nav-item-clicked="emitNavItemClicked")
 </template>
 
 <script>
@@ -26,7 +26,10 @@ export default {
 <style lang="scss" scoped>
 .navigation-bar {
   overflow: hidden;
-  width: 100%;
+  width: calc(100% - 40px);
+  position: fixed;
+  padding: 15px 20px;
+  z-index: 10;
 
   .logo {
     float: left;

@@ -53,7 +53,10 @@ export default {
   font-size: 32px;
 
   .current-component {
-    padding: 25px;
+    position: absolute;
+    top: 90px;
+    width: 100%;
+    overflow-x: hidden;
   }
 }
 </style>
