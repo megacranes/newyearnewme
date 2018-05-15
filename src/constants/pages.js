@@ -8,11 +8,11 @@ const CONTACT = {
 }
 const TEAM = {
   component: 'team',
-  navigationName: 'The Team'
+  navigationName: 'Team'
 }
 const FLEET = {
   component: 'fleet',
-  navigationName: 'Meet the Fleet'
+  navigationName: 'Fleet'
 }
 const SERVICES = {
   component: 'services',

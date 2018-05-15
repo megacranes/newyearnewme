@@ -1,0 +1,73 @@
+@import 'src/style/colors';
+@import 'src/style/fonts';
+
+.button {
+  border-radius: 2px;
+  margin: auto;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  margin: 3px;
+}
+
+.secondary-action-item-btn {
+  border: solid 1px $mega-orange;
+  background-color: rgba(255, 254, 254, 0.52);
+  height: 50px;
+  width: 200px;
+
+  span {
+    padding: 15px;
+    font-size: $desktop-h4-size;
+    color: $grey;
+  }
+
+  &.small {
+    background-color: rgba(255, 254, 254, 0.52);
+
+    height: 26px;
+    width: auto;
+
+    span {
+      margin: 5px;
+      font-size: $desktop-p-size;
+    }
+  }
+
+  &:hover {
+    span {
+      color: $white;
+    }
+  }
+}
+
+.action-item-btn {
+  border: solid 1px $mega-orange;
+  background-color: $mega-orange;
+  height: 50px;
+  width: 200px;
+
+  span {
+    margin: 15px;
+    font-size: $desktop-h4-size;
+    color: $white;
+  }
+
+  &.small {
+    height: 26px;
+    width: auto;
+
+    span {
+      margin: 5px;
+      font-size: $desktop-p-size;
+    }
+  }
+
+  &:hover {
+    background-color: $white;
+    font-color: $mega-orange;
+
+    span {
+      color: $mega-orange;
+    }
+  }
+}

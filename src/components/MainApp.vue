@@ -2,6 +2,7 @@
 .main-app
   navigation-bar(:navigation-items="navigationItems" @nav-item-clicked="changeCurrentComponent")
   component.current-component(v-bind:is="currentComponent")
+
 </template>
 
 <script>
@@ -47,14 +48,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+@import 'src/style/fonts';
+@import 'src/style/variables';
+
+body {
+  margin: 0;
+}
 .main-app {
   overflow: hidden;
-  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-  font-size: 32px;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  user-select: none;
 
   .current-component {
     position: absolute;
-    top: 90px;
+    // TODO: Make this set if page !=== landing, and scroll > 5
+    top: 0;
     width: 100%;
     overflow-x: hidden;
   }
