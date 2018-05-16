@@ -2,18 +2,30 @@ const LANDING_PAGE = {
   component: 'landing-page',
   navigationName: 'Home'
 }
+
 const CONTACT = {
-  component: 'contact',
-  navigationName: 'Contact'
+  component: 'landing-page',
+  navigationName: 'Contact',
+  onLoad: function () {
+    let element = document.getElementById('contact-container')
+
+    window.scrollTo({
+      top: element.getBoundingClientRect().top,
+      behavior: 'smooth'
+    })
+  }
 }
+
 const TEAM = {
   component: 'team',
   navigationName: 'Team'
 }
+
 const FLEET = {
   component: 'fleet',
   navigationName: 'Fleet'
 }
+
 const SERVICES = {
   component: 'services',
   navigationName: 'Services'

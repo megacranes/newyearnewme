@@ -17,7 +17,7 @@
   .our-projects.landing-page-container
     h4 Our Projects
   .img-container-2.landing-page-container
-  .contact-container.landing-page-container(href="#contact")
+  #contact-container.landing-page-container
     contact
 
 </template>
@@ -72,10 +72,6 @@ export default {
       position: relative;
       display: block;
     }
-  }
-
-  .word-cloud-container {
-    padding: 100px;
   }
 
   .about-the-company-container {
@@ -139,7 +135,7 @@ export default {
     }
   }
 
-  .contact-container {
+  #contact-container {
     background-color: $grey;
   }
 }

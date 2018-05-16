@@ -1,7 +1,11 @@
 <template lang="pug">
 .main-app
-  navigation-bar(:navigation-items="navigationItems" @nav-item-clicked="changeCurrentComponent")
-  component.current-component(v-bind:is="currentComponent")
+  navigation-bar(
+    :navigation-items="navigationItems"
+    @nav-item-clicked="changeCurrentComponent")
+  component.current-component(
+    :is="currentComponent"
+    :class="{ navBarSpace: isNavBarSpacing }")
 
 </template>
 
@@ -35,12 +39,21 @@ export default {
     Services,
     Team
   },
+  computed: {
+    isNavBarSpacing () {
+      return (this.currentComponent !== LANDING_PAGE.component)
+    }
+  },
   methods: {
     transitionToLandingPage () {
       this.currentComponent = LANDING_PAGE.component
     },
     changeCurrentComponent (newComponent) {
       this.currentComponent = newComponent.component
+
+      if (newComponent.onLoad) {
+        this.$nextTick(newComponent.onLoad)
+      }
     }
   }
 }
@@ -66,6 +79,10 @@ body {
     top: 0;
     width: 100%;
     overflow-x: hidden;
+
+    &.navBarSpace {
+      top: 60px;
+    }
   }
 }
 </style>

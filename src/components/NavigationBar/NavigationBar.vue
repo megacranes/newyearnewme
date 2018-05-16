@@ -1,7 +1,6 @@
 <template lang="pug">
-.navigation-bar
+.navigation-bar(:style="navBarStyle")
   .logo
-
   .request-quote
     button.button.action-item-btn.small
       span Get a Quote
@@ -18,11 +17,27 @@ const EVENTS = {
   TOGGLE_PHONE: 'toggle-phone'
 }
 
+const MAX_NAVBAR_TRANSPARENCY = 0.75
+
 export default {
   name: 'NavigationBar',
   props: ['navigationItems', 'isMobile'],
   components: {
     NavigationItem
+  },
+  data () {
+    return {
+      navBarTransparency: 0,
+      navBarStyle: {
+        backgroundColor: 'rgba(255, 255, 255, 0)'
+      }
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.updateScroll.bind(this))
+  },
+  destroy () {
+    window.removeEventListener('scroll', this.updateScroll.bind(this))
   },
   methods: {
     emitNavItemClicked (item) {
@@ -30,6 +45,12 @@ export default {
     },
     togglePhone () {
       this.$emit(EVENTS.TOGGLE_PHONE)
+    },
+    updateScroll () {
+      let newTransparency = window.scrollY * 0.005
+
+      this.navBarTransparency = (newTransparency > MAX_NAVBAR_TRANSPARENCY) ? MAX_NAVBAR_TRANSPARENCY : newTransparency
+      this.navBarStyle.backgroundColor = 'rgba(255, 255, 255, ' + this.navBarTransparency + ')'
     }
   }
 }
@@ -45,13 +66,14 @@ export default {
 
 .navigation-bar {
   overflow: hidden;
-  width: calc(100% - 40px);
+  width: calc(100% - 30px);
   position: fixed;
   display: block;
-  padding: 15px;
+  padding: $padding-med;
   z-index: 10;
   height: $desktop-header-height;
   vertical-align: middle;
+  border-bottom: 1px solid $grey;
 
   .logo {
     float: left;
