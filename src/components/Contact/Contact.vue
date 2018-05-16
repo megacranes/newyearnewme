@@ -20,8 +20,8 @@
     .address.contact-container
       img(src="../../assets/icon-directions.svg").icon.icon-24.icon-email
       .address.contact-info 6330 148 St.
-      .address Surrey, B.C.
-      .address 3C4
+      .address.contact-info.newline Surrey, B.C.
+      .address.contact-info.newline V3X 3C4
   .clear
 </template>
 
@@ -87,6 +87,13 @@ export default {
       .contact-info {
         position: absolute;
         line-height: 24px;
+
+        &.newline {
+          position: relative;
+          float: left;
+          margin-left: 25px;
+          margin-bottom: 4px;
+        }
       }
     }
   }

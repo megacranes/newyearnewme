@@ -1,5 +1,6 @@
 const LANDING_PAGE = {
   component: 'landing-page',
+  like: 'contact',
   navigationName: 'Home'
 }
 

@@ -6,7 +6,12 @@
       span Get a Quote
 
   .navigation-items-container
-    navigation-item(v-for="item in navigationItems" :key="item.navigationName" :item="item" @nav-item-clicked="emitNavItemClicked")
+    navigation-item(
+      v-for="item in navigationItems"
+      :key="item.navigationName"
+      :item="item"
+      :currentlySelected="currentlySelected"
+      @nav-item-clicked="emitNavItemClicked")
 </template>
 
 <script>
@@ -21,7 +26,11 @@ const MAX_NAVBAR_TRANSPARENCY = 0.75
 
 export default {
   name: 'NavigationBar',
-  props: ['navigationItems', 'isMobile'],
+  props: [
+    'navigationItems',
+    'isMobile',
+    'currentlySelected'
+  ],
   components: {
     NavigationItem
   },
@@ -81,6 +90,13 @@ export default {
 
   .request-quote {
     float: right;
+
+    button {
+      span {
+        font-size: $desktop-p-size-xs;
+        text-transform: uppercase;
+      }
+    }
   }
 
   .navigation-items-container {

@@ -1,6 +1,7 @@
 <template lang="pug">
 .main-app
   navigation-bar(
+    :currentlySelected="currentComponent"
     :navigation-items="navigationItems"
     @nav-item-clicked="changeCurrentComponent")
   component.current-component(
