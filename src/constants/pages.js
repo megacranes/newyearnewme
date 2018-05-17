@@ -1,8 +1,13 @@
 const LANDING_PAGE = {
   id: 'landing-page',
   component: 'landing-page',
-  like: 'contact',
-  navigationName: 'Home'
+  navigationName: 'Home',
+  onLoad: function () {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
 }
 
 const CONTACT = {
@@ -13,7 +18,7 @@ const CONTACT = {
     let element = document.getElementById('contact-container')
 
     window.scrollTo({
-      top: element.getBoundingClientRect().top,
+      top: element.offsetTop,
       behavior: 'smooth'
     })
   }

@@ -4,7 +4,7 @@
     span.main-img-text Deliver on your commitments.
     button.action-item-btn.button(@click="getACrane")
       span Get a Crane
-    button.secondary-action-item-btn.button(@click="getACrane")
+    button.secondary-action-item-btn.button(@click="viewOurProjects")
       span View our Projects
   .what-we-do-container.landing-page-container
     h4 What we Do
@@ -21,7 +21,7 @@
       .about-us-highlight {{ aboutUsTitleHighlight }}
       p {{ aboutUs }}
   .img-container-1.landing-page-container
-  .our-projects.landing-page-container
+  #our-projects.landing-page-container
     h4 Our Projects
   .img-container-2.landing-page-container
   #contact-container.landing-page-container
@@ -34,6 +34,8 @@ import ServiceItem from './WhatWeDo/ServiceItem'
 import Contact from '../Contact/Contact'
 
 import Services from './WhatWeDo/services'
+
+const NAV_BAR_HEIGHT = 70 // px
 
 export default {
   name: 'LandingPage',
@@ -53,6 +55,14 @@ export default {
   methods: {
     getACrane () {
       // TODO: emmit event to mainApp to switch component to getACrane
+    },
+    viewOurProjects () {
+      let element = document.getElementById('our-projects')
+
+      window.scrollTo({
+        top: element.offsetTop - NAV_BAR_HEIGHT,
+        behavior: 'smooth'
+      })
     }
   }
 }
@@ -143,7 +153,7 @@ export default {
     background-size: cover;
   }
 
-  .our-projects {
+  #our-projects {
     color: $grey;
     font-size: $desktop-h1-size;
 
