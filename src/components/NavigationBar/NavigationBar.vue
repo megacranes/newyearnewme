@@ -1,17 +1,18 @@
 <template lang="pug">
 .navigation-bar(:style="navBarStyle")
-  .logo
-  .request-quote
-    button.button.action-item-btn.small
-      span Get a Quote
+  .navigation-bar-container
+    .logo
+    .request-quote
+      button.button.action-item-btn.small
+        span Get a Quote
 
-  .navigation-items-container
-    navigation-item(
-      v-for="item in navigationItems"
-      :key="item.navigationName"
-      :item="item"
-      :currentlySelected="currentlySelected"
-      @nav-item-clicked="emitNavItemClicked")
+    .navigation-items-container
+      navigation-item(
+        v-for="item in navigationItems"
+        :key="item.navigationName"
+        :item="item"
+        :currentlySelected="currentlySelected"
+        @nav-item-clicked="emitNavItemClicked")
 </template>
 
 <script>
@@ -75,36 +76,41 @@ export default {
 
 .navigation-bar {
   overflow: hidden;
-  width: calc(100% - 30px);
+  width: 100%;
   position: fixed;
   display: block;
-  padding: $padding-med;
   z-index: 10;
   height: $desktop-header-height;
-  vertical-align: middle;
   border-bottom: 1px solid $grey;
+  padding: $padding-med 0;
 
-  .logo {
-    float: left;
-  }
+  .navigation-bar-container {
+    position: relative;
+    display: inline-block;
+    width: calc(100% - 60px);
 
-  .request-quote {
-    float: right;
+    .logo {
+      float: left;
+    }
 
-    button {
-      span {
-        font-size: $desktop-p-size-xs;
-        text-transform: uppercase;
+    .request-quote {
+      float: right;
+
+      button {
+        span {
+          font-size: $desktop-p-size-xs;
+          text-transform: uppercase;
+        }
       }
     }
-  }
 
-  .navigation-items-container {
-    float: right;
-  }
+    .navigation-items-container {
+      float: right;
+    }
 
-  .phone {
-    float: right;
+    .phone {
+      float: right;
+    }
   }
 }
 </style>
