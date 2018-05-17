@@ -8,6 +8,13 @@
       span View our Projects
   .what-we-do-container.landing-page-container
     h4 What we Do
+    .service-item-container
+      service-item(
+        v-for='item in servicesList'
+        :key='item.id'
+        :imgSrc='item.src'
+        :title='item.title'
+        :description='item.description')
   .about-the-company-container.landing-page-container
     .text
       .about-us {{ aboutUsTitle }}
@@ -23,7 +30,10 @@
 </template>
 
 <script>
+import ServiceItem from './WhatWeDo/ServiceItem'
 import Contact from '../Contact/Contact'
+
+import Services from './WhatWeDo/services'
 
 export default {
   name: 'LandingPage',
@@ -32,10 +42,12 @@ export default {
     return {
       aboutUsTitle: 'With over 30 years experience with',
       aboutUsTitleHighlight: 'Cranes',
-      aboutUs: 'Lorem ipsum dolor sit amet, sodales sollicitudin tortor lacus nostrud rutrum, eget adipiscing hendrerit integer pellentesque faucibus, at mauris ipsum, blandit lectus tortor nascetur massa fringilla ornare, dictum tempus risus et. Tincidunt volutpat, commodo adipiscing eu a est, non venenatis mi fusce ante ut, eu aliquet. Ligula non lorem non, lacus pede amet elit, at at lobortis, lacinia ullamcorper interdum pede per. Maecenas orci adipiscing et orci ac sociosqu. Nec a lacus id dolor, mattis donec, vestibulum nihil urna ligula sed ultricies malesuada, risus vitae nunc quam, suspendisse molestie ut. Nec feugiat ut etiam nec, vel elit vel vestibulum, ipsum at sed leo malesuada quis.'
+      aboutUs: 'Lorem ipsum dolor sit amet, sodales sollicitudin tortor lacus nostrud rutrum, eget adipiscing hendrerit integer pellentesque faucibus, at mauris ipsum, blandit lectus tortor nascetur massa fringilla ornare, dictum tempus risus et. Tincidunt volutpat, commodo adipiscing eu a est, non venenatis mi fusce ante ut, eu aliquet. Ligula non lorem non, lacus pede amet elit, at at lobortis, lacinia ullamcorper interdum pede per. Maecenas orci adipiscing et orci ac sociosqu. Nec a lacus id dolor, mattis donec, vestibulum nihil urna ligula sed ultricies malesuada, risus vitae nunc quam, suspendisse molestie ut. Nec feugiat ut etiam nec, vel elit vel vestibulum, ipsum at sed leo malesuada quis.',
+      servicesList: [Services.LIFTS, Services.SUPPORT, Services.TRANSPORT, Services.STAFF]
     }
   },
   components: {
+    ServiceItem,
     Contact
   },
   methods: {
@@ -116,6 +128,11 @@ export default {
     font-size: $desktop-h1-size;
     h4 {
       margin: 15px;
+    }
+
+    .service-item-container {
+      display: block;
+      text-align: center;
     }
   }
 
