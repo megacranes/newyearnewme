@@ -57,6 +57,12 @@ export default {
       this.$emit(EVENTS.NAV_HOME)
     },
     emitNavItemClicked (item) {
+      this.$ga.page({
+        page: '/',
+        title: item.navigationName,
+        location: window.location.href
+      })
+
       this.$emit(EVENTS.NAV_ITEM_CLICKED, item)
     },
     togglePhone () {
