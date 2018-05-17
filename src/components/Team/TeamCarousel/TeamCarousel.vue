@@ -1,7 +1,7 @@
 <template lang="pug">
 .team-carousel
   slick(ref="slick" :options="slickOptions")
-    a(v-for="member in teamMembers" :key="member.key" @click="showTeamMemberInfo(member)")
+    .carousel(v-for="member in teamMembers" :key="member.key" @click="showTeamMemberInfo(member)")
       img(class="slick-img" :src="member.pic").slick-img
 </template>
 
