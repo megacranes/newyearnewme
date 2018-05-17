@@ -1,10 +1,12 @@
 const LANDING_PAGE = {
+  id: 'landing-page',
   component: 'landing-page',
   like: 'contact',
   navigationName: 'Home'
 }
 
 const CONTACT = {
+  id: 'contact',
   component: 'landing-page',
   navigationName: 'Contact',
   onLoad: function () {
@@ -18,16 +20,19 @@ const CONTACT = {
 }
 
 const TEAM = {
+  id: 'about',
   component: 'team',
   navigationName: 'Team'
 }
 
 const FLEET = {
+  id: 'fleet',
   component: 'fleet',
   navigationName: 'Fleet'
 }
 
 const SERVICES = {
+  id: 'services',
   component: 'services',
   navigationName: 'Services'
 }

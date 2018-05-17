@@ -5,7 +5,7 @@
     :navigation-items="navigationItems"
     @nav-item-clicked="changeCurrentComponent")
   component.current-component(
-    :is="currentComponent"
+    :is="currentComponent.component"
     :class="{ navBarSpace: isNavBarSpacing }")
 
 </template>
@@ -28,7 +28,7 @@ export default {
   name: 'MainApp',
   data () {
     return {
-      currentComponent: LANDING_PAGE.component,
+      currentComponent: LANDING_PAGE,
       navigationItems: [LANDING_PAGE, SERVICES, FLEET, TEAM, CONTACT]
     }
   },
@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     isNavBarSpacing () {
-      return (this.currentComponent !== LANDING_PAGE.component)
+      return (this.currentComponent.component !== LANDING_PAGE.component)
     }
   },
   methods: {
@@ -50,7 +50,7 @@ export default {
       this.currentComponent = LANDING_PAGE.component
     },
     changeCurrentComponent (newComponent) {
-      this.currentComponent = newComponent.component
+      this.currentComponent = newComponent
 
       if (newComponent.onLoad) {
         this.$nextTick(newComponent.onLoad)

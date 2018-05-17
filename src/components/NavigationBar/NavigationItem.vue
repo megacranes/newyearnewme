@@ -14,12 +14,9 @@ export default {
     'hasSubMenu',
     'currentlySelected'
   ],
-  components: {
-
-  },
   computed: {
     isSelected () {
-      return (this.currentlySelected === this.item.component)
+      return (this.currentlySelected.id === this.item.id)
     }
   },
   methods: {
@@ -45,7 +42,7 @@ export default {
 
   &.isCurrentlySelected {
     span {
-      color: $mega-orange;      
+      color: $mega-orange;
     }
   }
 
