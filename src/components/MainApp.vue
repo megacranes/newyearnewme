@@ -3,7 +3,8 @@
   navigation-bar(
     :currentlySelected="currentComponent"
     :navigation-items="navigationItems"
-    @nav-item-clicked="changeCurrentComponent")
+    @nav-item-clicked="changeCurrentComponent"
+    @nav-home-clicked="transitionToLandingPage")
   component.current-component(
     :is="currentComponent.component"
     :class="{ navBarSpace: isNavBarSpacing }")
@@ -47,7 +48,7 @@ export default {
   },
   methods: {
     transitionToLandingPage () {
-      this.currentComponent = LANDING_PAGE.component
+      this.currentComponent = LANDING_PAGE
     },
     changeCurrentComponent (newComponent) {
       this.currentComponent = newComponent

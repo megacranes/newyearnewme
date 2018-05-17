@@ -1,11 +1,13 @@
 <template lang="pug">
 .navigation-bar(:style="navBarStyle")
   .navigation-bar-container
-    .logo
+    .logo(@click='navigateHome')
+      img(src='../../assets/mc-logo.png')
+    .phone
+      .icon(src=).icon-20
     .request-quote
       button.button.action-item-btn.small
         span Get a Quote
-
     .navigation-items-container
       navigation-item(
         v-for="item in navigationItems"
@@ -20,6 +22,7 @@ import NavigationItem from './NavigationItem'
 
 const EVENTS = {
   NAV_ITEM_CLICKED: 'nav-item-clicked',
+  NAV_HOME: 'nav-home-clicked',
   TOGGLE_PHONE: 'toggle-phone'
 }
 
@@ -50,6 +53,9 @@ export default {
     window.removeEventListener('scroll', this.updateScroll.bind(this))
   },
   methods: {
+    navigateHome () {
+      this.$emit(EVENTS.NAV_HOME)
+    },
     emitNavItemClicked (item) {
       this.$emit(EVENTS.NAV_ITEM_CLICKED, item)
     },
@@ -87,10 +93,16 @@ export default {
   .navigation-bar-container {
     position: relative;
     display: inline-block;
-    width: calc(100% - 60px);
+    width: calc(100% - 20px);
 
     .logo {
       float: left;
+      padding-left: 20px;
+      cursor: pointer;
+
+      img {
+        height: $desktop-header-height + 12px;
+      }
     }
 
     .request-quote {
@@ -110,6 +122,19 @@ export default {
 
     .phone {
       float: right;
+      padding: 5px 5px 5px 18px;
+      height: 24px;
+      width: 24px;
+
+      .icon {
+        height: 24px;
+        width: 24px;
+        background: url("../../assets/icon-phone-dark.svg") no-repeat;
+
+        &:hover {
+          background: url("../../assets/icon-phone.svg") no-repeat;
+        }
+      }
     }
   }
 }
