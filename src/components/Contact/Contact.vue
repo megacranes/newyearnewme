@@ -13,7 +13,7 @@
       a.phone.contact-info(href="tel:+1-604-599-4200") (604) 599-4200
     .phone-itl.contact-container.phone
       img(src="../../assets/icon-phone.svg" href="tel:+1-877-699-4200").icon.icon-24.icon-phone
-      a.phone.contact-info(href="tel:+1-877-699-4200") +1 (877) 699-4200
+      a.phone.contact-info(href="tel:+1-877-699-4200") +1 (877) 669-4200
     .email.contact-container
       img(src="../../assets/icon-email.svg").icon.icon-24.icon-email
       a.email.contact-info(href="mailto:info@megacranes.com") info@megacranes.com

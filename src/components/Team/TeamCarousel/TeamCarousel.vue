@@ -2,7 +2,7 @@
 .team-carousel
   slick(ref="slick" :options="slickOptions")
     a(v-for="member in teamMembers" :key="member.key" @click="showTeamMemberInfo(member)")
-      img(class="slick-img" :src="member.pic")
+      img(class="slick-img" :src="member.pic").slick-img
 </template>
 
 <script>
@@ -14,18 +14,19 @@ export default {
   data () {
     return {
       slickOptions: {
-        centerMode: false,
-        centerPadding: '20px',
+        accessibility: true, // Enable tabbing/arrow keys
+        adaptiveHeight: true,
+        arrows: false,
+        centerMode: true,
+        centerPadding: '0px',
+        cssEase: 'ease-out',
+        edgeFriction: 0.15,
+        dots: false,
+        draggable: true,
+        focusOnSelect: true,
+        pauseOnFocus: false,
         slidesToShow: 3,
         swipeToSlide: true,
-        slidesToScroll: 3,
-        infinite: true,
-        accessibility: true,
-        adaptiveHeight: true,
-        arrows: true,
-        dots: true,
-        draggable: true,
-        edgeFriction: 0.30,
         swipe: true
       }
     }
@@ -44,7 +45,6 @@ export default {
       this.$refs.slick.prev()
     },
     reInit () {
-      // Helpful if you have to deal with v-for to update dynamic lists
       this.$nextTick(() => {
         this.$refs.slick.reSlick()
       })
@@ -54,9 +54,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="scss">
 
 .team-carousel {
   overflow: hidden;
+
+  > .slick-img {
+
+  }
 }
 </style>

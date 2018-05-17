@@ -25,7 +25,7 @@ const TRANSPORT = {
 
 const STAFF = {
   id: '4',
-  title: 'Technical Support & Team',
+  title: 'Technical Support & Experience',
   description: 'From heavy duty mechanics, to experienced electrical technicians, our multi-facetted team ensures your equipment is always up and running, so you\'re never running to your client with bad news.',
   src: SupportImg
 }
